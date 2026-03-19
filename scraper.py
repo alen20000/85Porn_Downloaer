@@ -12,7 +12,7 @@ class VideoDownloader:
         self.url = url
         self.headers={
             'user-agent':'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Mobile Safari/537.36'
-            ,'Cookie':'_ga=GA1.1.1749939079.1758564712; PHPSESSID=k8nstcqnovs6mek4lktruk9vh9; kt_tcookie=1; kt_is_visited=1; _ga_3YMG8Q26HX=GS2.1.s1771777049$o15$g1$t1771778336$j60$l0$h0'
+            ,'Cookie':'_ga=GA1.1.1749939079.1758564712; kt_tcookie=1; kt_is_visited=1; _ga_3YMG8Q26HX=GS2.1.s1771777049$o15$g1$t1771778336$j60$l0$h0'
             }
         
         self.soup = None
@@ -85,7 +85,6 @@ class VideoDownloader:
 
 
     def _start_download(self): #下載
-        print(self.headers)
         time.sleep(random.uniform(2, 4))
         res = requests.get(self.select_url ,headers=self.headers,stream=True,timeout=30)
         total = int(res.headers.get('content-length', 0))  # 檔案總大小
