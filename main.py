@@ -1,13 +1,9 @@
+import ui
 import time
-from scraper import VideoDownloader
+import threading
 
-with open('urls.txt', 'r') as f:
-    urls = f.readlines()
+i = 0
 
-for url in urls:
-    url = url.strip()
-    if not url:
-        continue
-    print(f'開始下載: {url}')
-    downloader = VideoDownloader(url)
-    time.sleep(30)
+if __name__ == "__main__":
+    app =ui.App()
+    app.mainloop()
