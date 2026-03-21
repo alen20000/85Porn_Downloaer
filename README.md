@@ -3,7 +3,7 @@
 # 85po_downloader
 ---
 For site: www.85po.com
-小幫手下載85po網站影片資源
+輔助下載85po網站影片資源
 ---
 ### 功能:
 - [x] 批次下載，預設10個
@@ -12,7 +12,10 @@ For site: www.85po.com
 ---
 用法:
 1.根目錄打開main.py
-2.在小工具中，你要的85po影片網址，一次支持多排。
-<img src="assets/demo.png" width="400">
 
-3.點擊"開始下載"
+2.在工具視窗中，把你要的85po影片網址，直接複製貼上到網址框內，
+預設10個目標網址。
+
+<img src="assets/demo.png" width="ㄉ00">
+
+3.設置後，點擊"開始下載"，就能自動抓取了。
