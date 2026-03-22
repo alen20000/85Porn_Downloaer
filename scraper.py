@@ -30,12 +30,14 @@ class VideoDownloader:
         self.run()
 
     def run(self):
-
-        self._get_soup()
-        self._get_title()
-        self._get_download_links()
-        self._select_mode()
-        self._start_download()
+        try:
+            self._get_soup()
+            self._get_title()
+            self._get_download_links()
+            self._select_mode()
+            self._start_download()
+        except Exception as e:
+            print(e)
 
     def _get_soup(self): 
 
@@ -48,7 +50,12 @@ class VideoDownloader:
         self.soup = BeautifulSoup(res.text,'html.parser')
 
     def _get_title(self):
-        self.title = self.soup.find('h1', class_='title').text.strip()
+
+
+        tag = self.soup.find('h1', class_='title')
+        if not tag:
+            raise Exception('找不到標題')
+        self.title = tag.text.strip()
         print(f"影片名稱:{self.title}")
 
     def _select_mode(self):
