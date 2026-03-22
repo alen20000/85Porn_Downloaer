@@ -10,12 +10,7 @@ class VideoDownloader:
 
     def __init__(self,url=None,on_progress=None):
 
-        self.session = requests.Session()
-        self.session.headers.update({
-            'user-agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N)...',
-            'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'accept-language': 'zh-TW,zh;q=0.9,en;q=0.8',
-        })
+
         
         #初始化
         self.url = url
@@ -26,6 +21,13 @@ class VideoDownloader:
         self.select_url =None  # 即將下載的URL
         self.on_progress = on_progress  #
         self.downloaded = 0 #計算以下載的位元組
+
+        self.session = requests.Session()
+        self.session.headers.update({
+            'user-agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N)...',
+            'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'accept-language': 'zh-TW,zh;q=0.9,en;q=0.8','referer': self.url
+        })
 
         #run
         self.run()
@@ -80,7 +82,7 @@ class VideoDownloader:
 
     def _start_download(self): 
         '''專職下載，多緒在UI觸發時調用'''
-        time.sleep(random.uniform(2, 4))
+
         res =  self.session.get(self.select_url ,stream=True,timeout=30)
 
         if not res.ok:
