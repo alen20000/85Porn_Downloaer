@@ -99,7 +99,8 @@ class BottonFrame(tk.Frame):
         threading.Thread(target=self._run_download, daemon=True).start()
         
     def _run_download(self):
-        self.urls = self.master.top.get_urls()
+        
+        self.urls = self.master.get_urls()
 
         if not self.urls:
             print("請輸入網址")
@@ -117,3 +118,7 @@ class App(tk.Tk): #繼承tk.Tk
         self.top= TopFrame(self)
         self.console = MiddleFrame(self) #優先級要高，要先接管
         self.botton = BottonFrame(self)
+
+    def get_urls(self):
+        '''APP中間人，避免Frame之間直接存取兄弟元件'''
+        return self.top.get_urls()
